@@ -1,5 +1,5 @@
 <div class="wrapper">
-  <header class="box-shadowed">
+  <header class="box shadowed">
     <div class="logo">
       <img src="https://www.yaanimail.com/assets/img/common/newLogo.png" alt="YaaniMail" width="140"
         class="app-logo">
@@ -8,20 +8,23 @@
       <input type="text" placeholder="Arama...">
     </div>
   </header>
-  <div class="page-content">
+  <div class="page">
     <div class="category-list">
-      <h3>Kategoriler</h3>
+      <h3>
+        Kategoriler
+      </h3>
       <ul>
-        <li><a href="#"><i class="fa-solid fa-location-crosshairs"></i> Action</a></li>
-        <li><a href="#">Family</a></li>
-        <li><a href="#">Comedy</a></li>
+        <li><a href="#" class="active">Aksiyon<span class="badge">12</span></a></li>
+        <li><a href="#">Macera<span class="badge">10</span></a></li>
+        <li><a href="#">Family<span class="badge">17</span></a></li>
+        <li><a href="#">Comedy<span class="badge">8</span></a></li>
       </ul>
     </div>
 
-    <main class="box-shadowed">
+    <main class="box">
       <div class="film-list">
         <h4>Aksiyon kategorisindeki filmler</h4>
-        <hr>
+        <!-- <hr> -->
         <ul>
           <li><a href="">Esaretin Bedeli</a></li>
         </ul>
@@ -37,6 +40,23 @@
         <ul>
           <li><a href="">Son</a></li>
         </ul>
+      </div>
+      <div class="film-detail">
+        <strong class="film-title">Esaretin Bedeli</strong>
+        <img src="https://i4.hurimg.com/i/hurriyet/75/750x422/55eabcc9f018fbb8f8938170.jpg">
+        <p class="description">
+          Yinelenen bir sayfa içeriğinin okuyucunun dikkatini dağıttığı bilinen bir gerçektir. Lorem
+          Ipsum kullanmanın amacı, sürekli 'buraya metin gelecek, buraya metin gelecek' yazmaya
+          kıyasla daha dengeli bir harf dağılımı sağlayarak okunurluğu artırmasıdır. Şu anda birçok
+          masaüstü yayıncılık paketi ve web sayfa düzenleyicisi, varsayılan mıgır metinler olarak
+          Lorem Ipsum kullanmaktadır. Ayrıca arama motorlarında 'lorem ipsum' anahtar sözcükleri ile
+          arama yapıldığında henüz tasarım aşamasında olan çok sayıda site listelenir. Yıllar
+          içinde, bazen kazara, bazen bilinçli olarak (örneğin mizah katılarak), çeşitli sürümleri
+          geliştirilmiştir.
+        </p>
+        <div class="film-director">
+          <strong>Film Yönetmeni:</strong> John F. Kennedy
+        </div>
       </div>
     </main>
   </div>

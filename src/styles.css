@@ -4,9 +4,11 @@
     list-style-type: none;
     box-sizing: border-box;
     --bg-color: rgb(245, 248, 250);
+    --bg-color-badge: #3f51b5;
     --border-color: rgb(237, 242, 245);
     --text-color: #0b3254;
     --text-color-secondary: rgb(11, 50, 84);
+    --active-link-color: rgb(0, 160, 223);
 }
 
 a {
@@ -24,10 +26,13 @@ body {
     height: 100vh;
 }
 
-.box-shadowed {
-    /* box-shadow: 0px 2px 5px -1px rgba(0, 0, 0, 0.3);
+.shadowed {
+    box-shadow: 0px 2px 5px -1px rgba(0, 0, 0, 0.3);
     -webkit-box-shadow: 0px 2px 5px -1px rgba(0, 0, 0, 0.3);
-    -moz-box-shadow: 0px 2px 5px -1px rgba(0, 0, 0, 0.3); */
+    -moz-box-shadow: 0px 2px 5px -1px rgba(0, 0, 0, 0.3);
+}
+
+.box {
     background-color: #fff;
     border-color: var(--border-color);
 }
@@ -60,7 +65,7 @@ header .searh-section input::placeholder {
     color: --bg-color
 }
 
-.page-content {
+.page {
     padding: 0.5rem 2rem;
     display: flex;
     flex: 1;
@@ -75,21 +80,84 @@ header .searh-section input::placeholder {
 }
 
 .category-list ul {
-    margin-top: 0.4rem;
+    margin-top: 0.8rem;
 }
 
 .category-list ul li {
     padding: 0.5rem 0.3rem;
 }
 
+.category-list ul li a {
+    display: flex;
+    justify-content: space-between;
+    font-weight: 500;
+}
+
+.category-list ul li a:hover {
+    color: #3f51b5;
+}
+
+.category-list ul li a.active {
+    font-weight: 900;
+    color: var(--active-link-color);
+}
+
+.badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    width: 1.4rem;
+    height: 1.4rem;
+    background-color: var(--bg-color-badge);
+    color: #fff;
+    font-size: 0.8rem;
+    font-weight: 700;
+}
+
 main {
     margin-top: 0.4rem;
     padding: 2rem 4rem;
     flex: 1;
-    border-radius: 0.8rem;
+    border-radius: 1rem;
     min-height: 90vh;
+    color: var(--text-color-secondary);
+    display: flex;
+    flex-direction: row;
+    column-gap: 2rem;
+}
+
+.film-list {
+    width: 30%;
+}
+
+.film-list ul li {
+    margin-top: 0.6rem;
 }
 
 .film-list h4 {
     border-bottom: 1px solid var(--border-color);
+    padding-bottom: 0.6rem;
+}
+
+.film-detail {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.film-title {
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+}
+
+.film-detail img {
+    max-height: 20rem;
+    object-fit: contain;
+    margin-bottom: 1rem;
+}
+
+.film-detail .description {
+    margin-bottom: 1rem;
 }
