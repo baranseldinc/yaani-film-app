@@ -1,0 +1,11 @@
+main {
+    margin-top: 0.4rem;
+    padding: 2rem 4rem;
+    flex: 1;
+    border-radius: 1rem;
+    min-height: 90vh;
+    color: var(--text-color-secondary);
+    display: flex;
+    flex-direction: row;
+    column-gap: 2rem;
+}

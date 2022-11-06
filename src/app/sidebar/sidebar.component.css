@@ -1,0 +1,30 @@
+.category-list {
+    display: flex;
+    flex-direction: column;
+    --justify-content: center;
+    padding: 2rem;
+    width: 18rem;
+}
+
+.category-list ul {
+    margin-top: 0.8rem;
+}
+
+.category-list ul li {
+    padding: 0.5rem 0.3rem;
+}
+
+.category-list ul li a {
+    display: flex;
+    justify-content: space-between;
+    font-weight: 500;
+}
+
+.category-list ul li a:hover {
+    color: #3f51b5;
+}
+
+.category-list ul li a.active {
+    font-weight: 900;
+    color: var(--active-link-color);
+}

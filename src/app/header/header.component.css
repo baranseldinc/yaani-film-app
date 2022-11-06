@@ -1,0 +1,27 @@
+header {
+    display: flex;
+    padding: 1rem 2rem;
+    align-items: center;
+}
+
+header .logo {
+    padding: 0 2rem;
+}
+
+header .searh-section {
+    margin-left: 4rem;
+}
+
+header .searh-section input {
+    outline: none;
+    border: 1px solid var(--border-color);
+    width: 25rem;
+    font-size: 1.2rem;
+    background-color: var(--bg-color);
+    padding: 0.4rem 0.8rem;
+}
+
+header .searh-section input::placeholder {
+    font-size: 1rem;
+    color: --bg-color
+}
