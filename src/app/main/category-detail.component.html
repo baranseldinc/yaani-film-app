@@ -1,0 +1,21 @@
+<div class="category-detail">
+    <h4>{{category?.categoryName}} kategorisindeki filmler</h4>
+    <ul>
+        <li *ngFor="let film of getCurrentPageItems(); let indexOfElement=index">
+            <a [routerLink]="['film-detail/', film.filmId]">
+                <b>{{indexOfElement + startIndex + 1}}. </b>{{film.filmName}}</a>
+        </li>
+    </ul>
+
+    <div class="pagination">
+        <ng-container *ngFor="let item of pages">
+            <a class="pagination-item" (click)="handleClickPage(item)">{{item+1}}</a>
+        </ng-container>
+
+        <select class="options" [(ngModel)]="pageSize" (change)="handlePagination()">
+            <option *ngFor="let option of optionList" [ngValue]="option">{{option}}</option>
+        </select>
+    </div>
+</div>
+
+<router-outlet></router-outlet>

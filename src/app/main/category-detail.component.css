@@ -1,0 +1,29 @@
+.category-detail ul li {
+    margin-top: 0.6rem;
+}
+
+.category-detail h4 {
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 0.6rem;
+}
+
+.pagination {
+    margin-top: 1rem;
+    border-top: 1px solid var(--border-color);
+    padding-top: 0.5rem;
+    display: flex;
+}
+
+.pagination-item {
+    text-decoration: underline;
+    margin-left: 1rem;
+    cursor: pointer;
+}
+
+.pagination-item:hover {
+    color: var(--bg-color-badge);
+}
+
+.options {
+    margin-left: 1rem;
+}

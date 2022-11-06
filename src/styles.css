@@ -5,6 +5,7 @@
     box-sizing: border-box;
     --bg-color: rgb(245, 248, 250);
     --bg-color-badge: #3f51b5;
+    --color-danger: #f44336;
     --border-color: rgb(237, 242, 245);
     --text-color: #0b3254;
     --text-color-secondary: rgb(11, 50, 84);
@@ -48,4 +49,15 @@ body {
     color: #fff;
     font-size: 0.8rem;
     font-weight: 700;
+}
+
+.btn {
+    padding: 0.5rem 1rem;
+    border: none;
+    cursor: pointer;
+}
+
+.btn-danger {
+    background-color: var(--color-danger);
+    color: #fff;
 }
