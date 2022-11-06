@@ -15,6 +15,15 @@ export class FilmDetailComponent implements OnInit {
 
     constructor(private route: ActivatedRoute) { }
 
+    handleClickDeleteFilm() {
+        if (confirm(`${this.film?.filmName} isimli filmi silmek istediğinize emin misiniz?`)) {
+            const cat = data.find(cat => cat.categoryId === this.categoryId);
+            const index = cat?.list.findIndex(film => film.filmId === this.filmId);
+            if (index)
+                cat?.list.splice(index, 1);
+        }
+    }
+
     ngOnInit() {
         this.route.parent?.paramMap.subscribe(paramMap => {
             this.categoryId = paramMap.get('id');

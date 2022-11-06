@@ -1,7 +1,7 @@
 <div class="film-detail" *ngIf="film; else noFilmFound">
     <div class="film-title">
         <strong>{{ film.filmName}}</strong>
-        <button class="btn btn-danger">Filmi Sil</button>
+        <button class="btn btn-danger" (click)="handleClickDeleteFilm()">Filmi Sil</button>
     </div>
     <img src={{film.imageSrc}}>
     <p class="description">
