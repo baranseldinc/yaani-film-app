@@ -1,13 +1,19 @@
-<div class="film-detail">
+<div class="film-detail" *ngIf="film; else noFilmFound">
     <div class="film-title">
-        <strong>{{ film?.filmName}}</strong>
+        <strong>{{ film.filmName}}</strong>
         <button class="btn btn-danger">Filmi Sil</button>
     </div>
-    <img src={{film?.imageSrc}}>
+    <img src={{film.imageSrc}}>
     <p class="description">
-        {{film?.description}}
+        {{film.description}}
     </p>
     <div class="film-director">
-        <strong>Film Yönetmeni:</strong> {{film?.director}}
+        <strong>Film Yönetmeni:</strong> {{film.director}}
     </div>
 </div>
+
+<ng-template #noFilmFound>
+    <div style="margin-top:2rem">
+        <div class="alert alert-danger">{{filmId}} değerine karşılık gelen herhangi bir film kaydı bulunamamıştır.</div>
+    </div>
+</ng-template>

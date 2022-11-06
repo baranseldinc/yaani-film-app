@@ -6,6 +6,7 @@
     --bg-color: rgb(245, 248, 250);
     --bg-color-badge: #3f51b5;
     --color-danger: #f44336;
+    --color-danger-opac: #f44336dd;
     --border-color: rgb(237, 242, 245);
     --text-color: #0b3254;
     --text-color-secondary: rgb(11, 50, 84);
@@ -59,5 +60,19 @@ body {
 
 .btn-danger {
     background-color: var(--color-danger);
+    color: #fff;
+}
+
+.alert {
+    display: inline-block;
+    padding: 1rem 2rem;
+    font-weight: 500;
+    font-size: 0.8rem;
+    position: relative;
+    /* border-radius: 6px; */
+}
+
+.alert-danger {
+    background-color: var(--color-danger-opac);
     color: #fff;
 }

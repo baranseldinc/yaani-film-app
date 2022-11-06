@@ -11,7 +11,6 @@ const routes: Routes = [
       { path: 'film-detail/:id', component: FilmDetailComponent },
     ]
   },
-  { path: 'category/:id', component: CategoryDetailComponent },
   { path: '**', redirectTo: '' },
 ];
 

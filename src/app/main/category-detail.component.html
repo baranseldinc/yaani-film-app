@@ -1,5 +1,5 @@
-<div class="category-detail">
-    <h4>{{category?.categoryName}} kategorisindeki filmler</h4>
+<div class="category-detail" *ngIf="category;else noCategoryFound">
+    <h4>"{{category.categoryName}}" kategorisindeki filmler</h4>
     <ul>
         <li *ngFor="let film of getCurrentPageItems(); let indexOfElement=index">
             <a [routerLink]="['film-detail/', film.filmId]">
@@ -19,3 +19,7 @@
 </div>
 
 <router-outlet></router-outlet>
+
+<ng-template #noCategoryFound>
+    <div class="alert alert-danger">{{categoryId}} değerine karşılık gelen herhangi bir kategori kaydı bulunamamıştır.</div>
+</ng-template>

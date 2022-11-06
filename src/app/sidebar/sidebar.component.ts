@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router, RoutesRecognized } from '@angular/router';
+import { Router, RoutesRecognized } from '@angular/router';
 import { category, data } from '../model/model';
 
 @Component({
@@ -9,9 +9,9 @@ import { category, data } from '../model/model';
 })
 export class SidebarComponent implements OnInit {
   categories: category[] = data;
-  activePage: string = '';
+  activePage: string | null;
 
-  constructor(private route: ActivatedRoute, private router: Router) {
+  constructor(private router: Router) {
   }
 
   ngOnInit(): void {

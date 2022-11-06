@@ -1,9 +1,13 @@
 <div id="sidebar">
     <div class="category-list">
         <h3>Kategoriler</h3>
-        <ul *ngFor="let category of categories">
-            <!-- <li><a [routerLink]="['/category/macera']" class="active">Aksiyon<span class="badge">12</span></a></li> -->
-            <li><a [class.active]="activePage === category.categoryId" [routerLink]="['/category/', category.categoryId]">{{category.categoryName}}<span class="badge">{{category.list.length}}</span></a></li>
+        <ul>
+            <li *ngFor="let category of categories">
+                <a [class.active]="activePage === category.categoryId"
+                    [routerLink]="['/category/', category.categoryId]">{{category.categoryName}}
+                    <span class="badge">{{category.list.length}}</span>
+                </a>
+            </li>
         </ul>
     </div>
 </div>
