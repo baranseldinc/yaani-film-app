@@ -76,3 +76,8 @@ body {
     background-color: var(--color-danger-opac);
     color: #fff;
 }
+
+.alert-info {
+    background-color: var(--bg-color-badge);
+    color: #fff;
+}
