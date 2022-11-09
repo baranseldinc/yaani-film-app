@@ -1,0 +1,30 @@
+<h3>Yeni Film Ekle</h3>
+<form>
+    <div class="form-control">
+        <label for="category">Kategori</label>
+        <select class="options" id="category" [(ngModel)]="categoryId" name="categoryId">
+            <option *ngFor="let option of categories" [ngValue]="option.categoryId">{{option.categoryName}}</option>
+        </select>
+    </div>
+    <div class="form-control">
+        <label for="film-name">Film Adı</label>
+        <input type="text" id="film-name" [(ngModel)]="filmName" (keyup)="handleKeyupFilmName()" name="filmName">
+    </div>
+    <div class="form-control">
+        <label for="film-id">Film ID</label>
+        <input type="text" id="film-id" [(ngModel)]="filmId" name="filmId">
+    </div>
+    <div class="form-control">
+        <label for="film-description">Film Özeti</label>
+        <textarea id="film-description" rows="10" [(ngModel)]="description" name="description"></textarea>
+    </div>
+    <div class="form-control">
+        <label for="film-director">Film Yapımcısı</label>
+        <input type="text" id="film-director" [(ngModel)]="director" name="director">
+    </div>
+    <div class="form-control">
+        <label for="film-image-src">Film Image Link</label>
+        <input type="text" id="film-image-src" [(ngModel)]="imageSrc" name="imageSrc">
+    </div>
+    <button class="btn btn-info" (click)="save()">Kaydet</button>
+</form>

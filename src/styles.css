@@ -4,7 +4,7 @@
     list-style-type: none;
     box-sizing: border-box;
     --bg-color: rgb(245, 248, 250);
-    --bg-color-badge: #3f51b5;
+    --bg-color-badge: #3f51b588;
     --color-danger: #f44336;
     --color-danger-opac: #f44336dd;
     --border-color: rgb(237, 242, 245);
@@ -56,10 +56,17 @@ body {
     padding: 0.5rem 1rem;
     border: none;
     cursor: pointer;
+    margin-bottom: 1rem;
+    border-radius: 0.4rem;
 }
 
 .btn-danger {
     background-color: var(--color-danger);
+    color: #fff;
+}
+
+.btn-info {
+    background-color: #00a0df;
     color: #fff;
 }
 
@@ -80,4 +87,28 @@ body {
 .alert-info {
     background-color: var(--bg-color-badge);
     color: #fff;
+}
+
+#sidebar {
+    height: 90vh;
+}
+
+.sidebar-visible {
+    left: 0rem !important;
+}
+
+@media only screen and (max-width: 768px) {
+    #sidebar {
+        position: absolute;
+        background-color: #fff;
+        border-radius: 1rem;
+        z-index: 100;
+        margin-left: 0.4rem;
+        margin-top: 0.5rem;
+        left: -30rem;
+        transition: left .4s;
+        box-shadow: 0px 2px 5px -1px rgba(0, 0, 0, 0.3);
+        -webkit-box-shadow: 0px 2px 5px -1px rgba(0, 0, 0, 0.3);
+        -moz-box-shadow: 0px 2px 5px -1px rgba(0, 0, 0, 0.3);
+    }
 }
