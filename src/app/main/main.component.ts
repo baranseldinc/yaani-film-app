@@ -8,6 +8,10 @@ import { Component, OnInit } from '@angular/core';
 export class MainComponent implements OnInit {
   constructor() { }
 
+  toggle() {
+    document.querySelector('#sidebar')?.classList.toggle('sidebar-visible');
+  }
+
   ngOnInit(): void {
   }
 

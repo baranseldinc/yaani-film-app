@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { data, film } from '../model/model';
+import { category, film } from '../model/model';
+import { FilmService } from '../service/film.service';
 
 @Component({
   selector: 'film-detail',
@@ -9,10 +10,12 @@ import { data, film } from '../model/model';
 })
 export class FilmDetailComponent implements OnInit {
   filmId: string | null;
+  filmIndex: number;
   film: film | undefined;
   categoryId: string | null;
+  categoryIndex: number;
 
-  constructor(private route: ActivatedRoute, private router: Router) {}
+  constructor(private route: ActivatedRoute, private router: Router, private service: FilmService) { }
 
   handleClickDeleteFilm() {
     if (
@@ -20,12 +23,9 @@ export class FilmDetailComponent implements OnInit {
         `${this.film?.filmName} isimli filmi silmek istediğinize emin misiniz?`
       )
     ) {
-      const cat = data.find((cat) => cat.categoryId === this.categoryId);
-      const index = cat?.list?.findIndex((film) => film.filmId === this.filmId);
-      if (index !== undefined && index > -1) {
-        cat?.list.splice(index, 1);
-        this.router.navigate(['category', this.categoryId]);
-      }
+      this.service.deleteFilm(this.categoryIndex!, this.filmIndex!, () => {
+        this.router.navigate(['/category/', this.categoryId]);
+      })
     }
   }
 
@@ -36,9 +36,25 @@ export class FilmDetailComponent implements OnInit {
 
     this.route.paramMap.subscribe((paramMap) => {
       this.filmId = paramMap.get('id');
-      const category = data.find((cat) => cat.categoryId === this.categoryId);
-      this.film = category?.list.find((film) => film.filmId === this.filmId);
-      window.scrollTo(0, document.body.scrollHeight);
+      this.subscribeToDataChanges();
+
+    });
+
+    this.subscribeToDataChanges
+  }
+
+  subscribeToDataChanges(): void {
+    this.service.changes.subscribe({
+      next: (data: category[]) => {
+        this.categoryIndex = data.findIndex((cat) => cat.categoryId === this.categoryId);
+        const category = data[this.categoryIndex];
+        this.filmIndex = category?.list.findIndex(film => film.filmId === this.filmId)!;
+        this.film = category?.list[this.filmIndex];
+        window.scrollTo(0, document.body.scrollHeight);
+      },
+      error: (msg) => {
+        console.log('Error: ', msg);
+      }
     });
   }
 }

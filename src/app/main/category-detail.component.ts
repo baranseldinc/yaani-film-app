@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, UrlSegment } from '@angular/router';
-import { category, data, film } from '../model/model';
+import { category } from '../model/model';
+import { FilmService } from '../service/film.service';
 
 @Component({
     selector: 'category-detail',
@@ -18,7 +19,7 @@ export class CategoryDetailComponent implements OnInit {
     startIndex: number;
 
 
-    constructor(private route: ActivatedRoute) {
+    constructor(private route: ActivatedRoute, private service: FilmService) {
         this.pageSize = this.optionList[1];
         this.currentPage = 0;
     }
@@ -45,8 +46,19 @@ export class CategoryDetailComponent implements OnInit {
 
         this.route.url.subscribe((url: UrlSegment[]) => {
             this.categoryId = url[1].path;
-            this.category = data.find(item => item.categoryId === this.categoryId);
-            this.handlePagination();
+            this.subscribeToDataChanges();
         });
     }
+
+    subscribeToDataChanges(): void {
+        this.service.changes.subscribe({
+          next: (data: category[]) => {
+            this.category = data.find((cat) => cat.categoryId === this.categoryId);
+            this.handlePagination();
+          },
+          error: (msg) => {
+            console.log('Error: ', msg);
+          }
+        });
+      }
 }

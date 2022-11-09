@@ -1,0 +1,17 @@
+.form-control {
+    width: 30rem;
+    margin: 0.6rem 0;
+    display: flex;
+    justify-content: space-between;
+}
+
+input,
+textarea,
+select {
+    width: 16rem;
+    padding: .2rem;
+}
+
+button {
+    margin-top: 1rem;
+}
