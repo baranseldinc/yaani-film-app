@@ -43,12 +43,10 @@ export class AddFilmComponent implements OnInit {
   ngOnInit(): void {
     this.service.changes.subscribe({
       next: (data: category[]) => {
-        console.log(data)
-
         this.categories = data;
       },
       error: (msg) => {
-        // console.log('Error: ', msg);
+        console.log('Error: ', msg);
       }
     })
   }

@@ -4,6 +4,7 @@ export interface film {
   filmId: string;
   director: string;
   imageSrc: string;
+  isDeleted: boolean;
 }
 
 export interface category {

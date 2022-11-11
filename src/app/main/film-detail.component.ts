@@ -15,7 +15,11 @@ export class FilmDetailComponent implements OnInit {
   categoryId: string | null;
   categoryIndex: number;
 
-  constructor(private route: ActivatedRoute, private router: Router, private service: FilmService) { }
+  constructor(
+    private route: ActivatedRoute,
+    private router: Router,
+    private service: FilmService
+  ) {}
 
   handleClickDeleteFilm() {
     if (
@@ -23,9 +27,14 @@ export class FilmDetailComponent implements OnInit {
         `${this.film?.filmName} isimli filmi silmek istediğinize emin misiniz?`
       )
     ) {
-      this.service.deleteFilm(this.categoryIndex!, this.filmIndex!, () => {
-        this.router.navigate(['/category/', this.categoryId]);
-      })
+      this.service.deleteFilm(
+        this.categoryIndex!,
+        this.filmIndex!,
+        this.film!,
+        () => {
+          this.router.navigate(['/category/', this.categoryId]);
+        }
+      );
     }
   }
 
@@ -37,24 +46,27 @@ export class FilmDetailComponent implements OnInit {
     this.route.paramMap.subscribe((paramMap) => {
       this.filmId = paramMap.get('id');
       this.subscribeToDataChanges();
-
     });
 
-    this.subscribeToDataChanges
+    this.subscribeToDataChanges;
   }
 
   subscribeToDataChanges(): void {
     this.service.changes.subscribe({
       next: (data: category[]) => {
-        this.categoryIndex = data.findIndex((cat) => cat.categoryId === this.categoryId);
+        this.categoryIndex = data.findIndex(
+          (cat) => cat.categoryId === this.categoryId
+        );
         const category = data[this.categoryIndex];
-        this.filmIndex = category?.list.findIndex(film => film.filmId === this.filmId)!;
+        this.filmIndex = category?.list.findIndex(
+          (film) => film.filmId === this.filmId
+        )!;
         this.film = category?.list[this.filmIndex];
         window.scrollTo(0, document.body.scrollHeight);
       },
       error: (msg) => {
         console.log('Error: ', msg);
-      }
+      },
     });
   }
 }
