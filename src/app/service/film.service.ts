@@ -31,6 +31,7 @@ export class FilmService {
         const data = snapshot && snapshot.val();
         data.forEach((item: category) => {
           if (!item.list) item.list = [];
+          item.nextIndex = item.list.length;
           item.list = item.list.filter((item) => !item.isDeleted);
         });
         observer.next(data);

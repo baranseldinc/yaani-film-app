@@ -6,9 +6,8 @@ import { FilmService } from '../service/film.service';
 @Component({
   selector: 'app-add-film',
   templateUrl: './add-film.component.html',
-  styleUrls: ['./add-film.component.css']
+  styleUrls: ['./add-film.component.css'],
 })
-
 export class AddFilmComponent implements OnInit {
   categories: category[];
   filmName: string;
@@ -18,26 +17,32 @@ export class AddFilmComponent implements OnInit {
   director: string;
   imageSrc: string;
 
-  constructor(private service: FilmService, private router: Router) { }
+  constructor(private service: FilmService, private router: Router) {}
 
   handleKeyupFilmName() {
     this.filmId = kebabCase(this.filmName);
   }
 
   save() {
-    const categoryIndex = this.categories.findIndex(item => item.categoryId === this.categoryId);
-    const nextIndex = this.categories[categoryIndex].list.length;
-    this.service.saveNewFilm({
-      categoryIndex,
-      nextIndex,
-      filmId: this.filmId,
-      filmName: this.filmName,
-      description: this.description,
-      director: this.director,
-      imageSrc: this.imageSrc
-    }, () => {
-      this.router.navigate(['category/', this.categoryId]);
-    })
+    const categoryIndex = this.categories.findIndex(
+      (item) => item.categoryId === this.categoryId
+    );
+    const list = this.categories[categoryIndex];
+    const nextIndex = this.categories[categoryIndex].nextIndex;
+    this.service.saveNewFilm(
+      {
+        categoryIndex,
+        nextIndex,
+        filmId: this.filmId,
+        filmName: this.filmName,
+        description: this.description,
+        director: this.director,
+        imageSrc: this.imageSrc,
+      },
+      () => {
+        this.router.navigate(['category/', this.categoryId]);
+      }
+    );
   }
 
   ngOnInit(): void {
@@ -47,14 +52,14 @@ export class AddFilmComponent implements OnInit {
       },
       error: (msg) => {
         console.log('Error: ', msg);
-      }
-    })
+      },
+    });
   }
-
 }
 
 function kebabCase(text: string): string {
-  return text.replace(/([a-z])([A-Z])/g, "$1-$2")
+  return text
+    .replace(/([a-z])([A-Z])/g, '$1-$2')
     .replace(/[\s_]+/g, '-')
     .toLowerCase();
 }

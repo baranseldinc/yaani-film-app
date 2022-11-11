@@ -11,4 +11,5 @@ export interface category {
   categoryId: string;
   categoryName: string;
   list: film[];
+  nextIndex: number;
 }
